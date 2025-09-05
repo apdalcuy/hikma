@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hikma</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #333;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      background: linear-gradient(-45deg, #ffb6c1, #ffc0cb, #ff69b4, #ff85a1);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+      position: relative;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Efek bintang */
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.6);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+    }
+    header h1 {
+      font-size: 2.5em;
+      margin: 0;
+      animation: fadeDown 1s ease-out;
+    }
+    nav {
+      margin-top: 10px;
+      animation: fadeUp 1.2s ease-out;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #d63384;
+      font-weight: bold;
+      transition: color 0.3s, transform 0.3s;
+    }
+    nav a:hover {
+      color: #333;
+      transform: scale(1.1);
+    }
+
+    .music-control {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255,255,255,0.8);
+      border: none;
+      border-radius: 50%;
+      padding: 15px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+      cursor: pointer;
+      font-size: 18px;
+      transition: transform 0.3s;
+    }
+    .music-control:hover {
+      transform: scale(1.1);
+    }
+
+    .section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      box-sizing: border-box;
+      scroll-snap-align: start;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    .section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    img.profile {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.5s;
+      display: block;
+    }
+
+    .content {
+      max-width: 700px;
+      text-align: center;
+      font-size: 1.2em;
+      line-height: 1.8;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+      animation: fadeIn 1.5s ease-out;
+    }
+    .content h2 {
+      animation: fadeDown 1s ease-out;
+    }
+    .content p {
+      animation: fadeUp 1.3s ease-out;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="container">
+    <header>
+      <h1>Hikma</h1>
+      <nav>
+        <a href="#tentang">Tentang Saya</a>
+        <a href="#cerita">Cerita Hidup</a>
+        <a href="#cita">Cita-Cita</a>
+      </nav>
+    </header>
+
+    <!-- FOTO langsung dari link -->
+    <section class="section" id="tentang">
+      <img src="https://files.catbox.moe/4h5vsa.jpg" alt="Foto Hikma" class="profile">
+      <div class="content">
+        <h2>Tentang Saya</h2>
+        <p>Halo, nama saya Hikma. Saya adalah seorang perempuan yang penuh semangat dan suka belajar hal-hal baru. Saya percaya bahwa setiap orang memiliki jalan hidup masing-masing yang unik.</p>
+      </div>
+    </section>
+
+    <section class="section" id="cerita">
+      <div class="content">
+        <h2>Cerita Hidup</h2>
+        <p>Saya lahir dan besar dengan penuh kasih sayang keluarga. Sejak kecil, saya suka membaca, menulis, dan mencoba hal-hal kreatif. Pengalaman hidup telah mengajarkan saya arti perjuangan, ketulusan, dan kerja keras.</p>
+      </div>
+    </section>
+
+    <section class="section" id="cita">
+      <div class="content">
+        <h2>Cita-Cita</h2>
+        <p>Saya bercita-cita untuk menjadi seseorang yang bermanfaat bagi banyak orang, khususnya di bidang pendidikan dan pemberdayaan perempuan. Saya ingin terus belajar, berkembang, dan memberi inspirasi.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Musik Latar -->
+  <audio id="bgMusic" loop>
+    <source src="https://files.catbox.moe/2f5742.m4a" type="audio/mpeg">
+  </audio>
+  <button class="music-control" id="musicBtn">▶</button>
+
+  <script>
+    const sections = document.querySelectorAll(".section");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("show");
+      });
+    }, { threshold: 0.2 });
+    sections.forEach(section => observer.observe(section));
+
+    // Tambahkan bintang acak
+    const starsContainer = document.querySelector('.stars');
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      starsContainer.appendChild(star);
+    }
+
+    // Musik kontrol
+    const bgMusic = document.getElementById("bgMusic");
+    const musicBtn = document.getElementById("musicBtn");
+    let isPlaying = false;
+    musicBtn.addEventListener("click", () => {
+      if (isPlaying) {
+        bgMusic.pause();
+        musicBtn.textContent = "▶";
+      } else {
+        bgMusic.play();
+        musicBtn.textContent = "⏸";
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
+</body>
+  </html>
